@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Receipt</h1>
+<p><strong>Order ID:</strong> {{ order.id }}</p>
+<p><strong>Table Number:</strong> {{ order.table_number }}</p>
+<p><strong>Total Price:</strong> ₹{{ order.total_price }}</p>
+<p><strong>Items:</strong> {{ order.items }}</p>
+<img src="data:image/png;base64,{{ qr_code }}" alt="UPI QR Code">
+<a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}
