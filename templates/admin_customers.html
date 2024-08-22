@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Manage Customers</h1>
+<ul>
+    {% for customer in customers %}
+    <li>
+        <strong>Name:</strong> {{ customer.name }}<br>
+        <strong>Email:</strong> {{ customer.email }}
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}
