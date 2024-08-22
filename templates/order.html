@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Place Order</h1>
+<form action="{{ url_for('order') }}" method="post">
+    <div class="form-group">
+        <label for="table_number">Table Number:</label>
+        <input type="text" id="table_number" name="table_number" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="item_ids">Select Items:</label>
+        <select multiple class="form-control" id="item_ids" name="item_ids">
+            {% for item in items %}
+            <option value="{{ item.id }}">{{ item.name }} - ₹{{ item.price }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="total_price">Total Price:</label>
+        <input type="number" step="0.01" id="total_price" name="total_price" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="customer_id">Select Customer:</label>
+        <select class="form-control" id="customer_id" name="customer_id">
+            <option value="">No customer</option>
+            {% for customer in customers %}
+            <option value="{{ customer.id }}">{{ customer.name }} - {{ customer.email }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Order</button>
+</form>
+<a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}
