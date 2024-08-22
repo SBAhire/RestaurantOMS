@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Manage Orders</h1>
+<form action="{{ url_for('manage_orders') }}" method="get">
+    <input type="text" name="search" class="form-control" placeholder="Search orders">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<ul>
+    {% for order in orders %}
+    <li>
+        <strong>Order ID:</strong> {{ order.id }}<br>
+        <strong>Table Number:</strong> {{ order.table_number }}<br>
+        <strong>Items:</strong> {{ order.items }}<br>
+        <strong>Total Price:</strong> ₹{{ order.total_price }}<br>
+        <strong>Status:</strong> {{ order.status }}<br>
+        <strong>Customer:</strong> {{ order.customer.name if order.customer else 'N/A' }}<br>
+        <strong>Placed by:</strong> {{ order.user.username if order.user else 'N/A' }}<br>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}
