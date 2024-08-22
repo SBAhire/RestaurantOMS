@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Update UPI ID</h1>
+<form action="{{ url_for('update_upi') }}" method="post">
+    <div class="form-group">
+        <label for="upi_id">UPI ID:</label>
+        <input type="text" id="upi_id" name="upi_id" class="form-control" value="{{ upi_id }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Update UPI ID</button>
+</form>
+<a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}
